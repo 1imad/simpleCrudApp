@@ -1,0 +1,27 @@
+body{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+.container{
+    padding-left: 15%;
+    padding-right: 15%;
+    padding-top: 3%;
+}
+.inputForm{
+    border: 2px solid grey;
+    margin: auto;
+    text-align: center;
+    width: 400px;
+    padding: 2%;
+}
+.personsContainer{
+    text-align: center;
+}
+.personDetails{
+    border: 1px solid black;
+    margin: auto;
+    padding: 15px;
+    width: 300px;
+}
+.floatRight{
+    float: right;
+}
