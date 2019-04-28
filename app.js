@@ -5,7 +5,7 @@ const   Express = require('express'),
         port = process.env.PORT || 3000,
         app = Express();
 
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(Express.static('public'));
 app.use(methodOverride('_method'));
 app.set('view engine', 'ejs');
@@ -19,51 +19,51 @@ var dataSchema = new mongoose.Schema({
 
 var data = mongoose.model('data', dataSchema);
 
-app.get('/', (req, res) =>{
-    data.find({}, (err, data)=>{
-        if(err){
+app.get('/', (req, res) => {
+    data.find({}, (err, data) => {
+        if (err) {
             console.log(err)
-        }else{
-        res.render('index', {data: data});        
+        } else {
+            res.render('index', { data: data });
         }
     })
 })
 
 app.post('/add', (req, res) => {
     let formData = req.body;
-    data.create(formData, (err, formData)=>{
-        if(err){
+    data.create(formData, (err, formData) => {
+        if (err) {
             console.log(err)
-        }else{
+        } else {
             res.redirect('/');
         }
     })
 });
-app.get('/update/:id', (req, res)=>{
+app.get('/update/:id', (req, res) => {
     data.findById(req.params.id, (err, data) => {
-        if(err){
+        if (err) {
             console.log(err);
-        }else{
+        } else {
         }
-        res.render('update', {data: data});
+        res.render('update', { data: data });
     })
 })
 app.put('/update/:id', (req, res) => {
     let formData = req.body;
     console.log(formData);
-    data.update({_id: req.params.id},{name: formData.name, age: formData.age}, (err) => {
-        if(err){
+    data.update({ _id: req.params.id }, { name: formData.name, age: formData.age }, (err) => {
+        if (err) {
             console.log(err)
-        }else{
+        } else {
             res.redirect('/')
         }
     });
 });
-app.delete('/delete/:id', (req, res)=>{
+app.delete('/delete/:id', (req, res) => {
     data.findByIdAndRemove(req.params.id, (err) => {
-        if(err){
+        if (err) {
             console.log(err);
-        }else{
+        } else {
             res.redirect('/');
         }
     });
